@@ -1,6 +1,7 @@
 ﻿using GerenciadorFinanceiro.Data;
 using GerenciadorFinanceiro.Models;
 using Microsoft.EntityFrameworkCore;
+using Neat.Procedure;
 
 namespace GerenciadorFinanceiro.Repositories.Transacoes
 {
@@ -96,5 +97,18 @@ namespace GerenciadorFinanceiro.Repositories.Transacoes
                 return false;
             }
         }
+        public async Task<List<BalançoGeralSemestre>> GerarBalancoSemestre(int qtdMeses)
+        {
+            try
+            {
+                return ProcedureExecuter.ExecuteReader<BalançoGeralSemestre>("SPS_BalancoGeralSemestre", qtdMeses).ToList();
+
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+        }
+
     }
 }

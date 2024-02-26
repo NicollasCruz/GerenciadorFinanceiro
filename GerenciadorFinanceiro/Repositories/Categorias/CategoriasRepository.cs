@@ -56,7 +56,7 @@ namespace GerenciadorFinanceiro.Repositories.Categorias
             }
         }
 
-        public async Task<bool> RegistrarCategoria(string nome)
+        public async Task<int> RegistrarCategoria(string nome)
         {
             try
             {
@@ -70,11 +70,11 @@ namespace GerenciadorFinanceiro.Repositories.Categorias
                 categorias.Add(novaCategoria);
                 await _context.SaveChangesAsync();
 
-                return true;
+                return novaCategoria.Id ;
             }
             catch (Exception ex)
             {
-                return false;
+                throw new Exception(ex.Message);
             }
         }
     }

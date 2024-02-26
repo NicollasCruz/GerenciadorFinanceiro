@@ -19,7 +19,7 @@ namespace GerenciadorFinanceiro
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "FilmesAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Gerencia_Financeira", Version = "v1" });
             });
             services.AddDbContext<AppDbContext>(opts => opts.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("GerenciaConnection")));
             services.AddControllers();
@@ -69,8 +69,6 @@ namespace GerenciadorFinanceiro
                 options.AllowAnyOrigin();
             });
 
-            app.UseAuthorization();
-            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

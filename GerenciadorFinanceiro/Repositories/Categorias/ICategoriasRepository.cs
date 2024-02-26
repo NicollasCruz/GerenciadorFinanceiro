@@ -6,7 +6,7 @@ namespace GerenciadorFinanceiro.Repositories.Categorias
     {
         public Task<List<Categoria>> GetCategorias();
         public Task<bool> EncontrarCategoria(string nome);
-        public Task<bool> RegistrarCategoria(string nome);
+        public Task<int> RegistrarCategoria(string nome);
         public Task<bool> ExcluirCategoria(int id);
     }
 }

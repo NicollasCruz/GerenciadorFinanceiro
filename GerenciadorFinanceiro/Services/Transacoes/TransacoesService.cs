@@ -1,6 +1,7 @@
 ﻿using GerenciadorFinanceiro.Models;
 using GerenciadorFinanceiro.Repositories.Categorias;
 using GerenciadorFinanceiro.Repositories.Transacoes;
+using Neat.Procedure;
 
 namespace GerenciadorFinanceiro.Services.Transacoes
 {
@@ -41,9 +42,22 @@ namespace GerenciadorFinanceiro.Services.Transacoes
 
             if (categoriaExistente == false)
             {
-                await _categoriasRepository.RegistrarCategoria(obj.Categoria);
+                var IdCategoria = await _categoriasRepository.RegistrarCategoria(obj.Categoria);
+                obj.IdCategoria = IdCategoria;
             }
             return await _repository.RegistrarTransacao(obj);
+        }
+
+        public async Task<BalançoGeralSemestre> GerarBalancoSemestre(int qtdMeses)
+        {
+            try
+            {
+                throw new Exception("Teste");
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
         }
     }
 }
